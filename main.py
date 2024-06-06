@@ -1,4 +1,3 @@
-import socket
+import platform
 import streamlit as st
-
-st.write(socket.gethostname())
+st.write(platform.node())
