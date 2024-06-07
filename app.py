@@ -1,16 +1,9 @@
-from flask import Flask, render_template
-import requests
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-def get_public_ip():
-    try:
-        response = requests.get('https://api.ipify.org?format=json')
-        return response.json().get('ip')
-    except requests.RequestException:
-        return 'Unable to retrieve IP address'
-
 @app.route('/')
-def get_node_name():
-    public_ip = get_public_ip()
-    return render_template('index.html', node_name=public_ip)
+def get_client_ip():
+    client_ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+    return render_template('index.html', client_ip=client_ip)
+
