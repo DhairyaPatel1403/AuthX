@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client IP</title>
+    <title>Client IPs</title>
 </head>
 <body>
-    <h1>Client IP Address</h1>
-    <p>Your IP address is: <strong>{{ client_ip }}</strong></p>
+    <h1>Client IP Addresses</h1>
+    <p>The IP addresses the request passed through:</p>
+    <ul>
+        {% for ip in ip_list %}
+            <li>{{ ip }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
